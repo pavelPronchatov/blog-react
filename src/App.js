@@ -1,33 +1,26 @@
 import './App.scss';
 import Header from "./components/Header/Header";
-import EditBtn from "./components/EditBtn/EditBtn";
-import PostList from "./components/PostList/PostList";
-import Pagination from "./components/Pagination/Pagination";
-import {useEffect} from "react";
-import {mainApi} from "./api/api";
+import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {setPostAC} from "./redux/actions/actions";
+import {setPosts} from "./redux/actions/actions";
+import {Route} from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import EditPage from "./pages/EditPage";
 
 
 function App() {
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    mainApi.getPostApi()
-      .then(data => {
-        console.log(data.post);
-        dispatch(setPostAC(data.post))
-      })
+    dispatch(setPosts());
   }, []);
 
   return (
     <div className="App">
       <div className="container">
         <Header/>
-        <EditBtn/>
-        <PostList/>
-        <Pagination/>
+        <Route exact path={'/'} component={MainPage}/>
+        <Route exact path={'/edit-page'} component={EditPage}/>
       </div>
     </div>
   );

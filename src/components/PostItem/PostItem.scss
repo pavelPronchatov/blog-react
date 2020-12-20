@@ -23,11 +23,35 @@
     margin-right: 20px;
     border-radius: 10px;
     overflow: hidden;
+    object-fit: cover;
   }
   &__text {
     color: grey;
     font-size: 16px;
     max-width: 100%;
     width: 500px;
+  }
+  &__btns {
+    display: flex;
+  }
+  &__delete,
+  &__pencil{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .3s;
+    border: 2px solid grey;
+    border-radius: 5px;
+    margin-left: 10px;
+    & img {
+      width: 30px;
+      height: 30px;
+    }
+    &:hover {
+      background-color: #fff;
+    }
   }
 }

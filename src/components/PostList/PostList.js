@@ -13,7 +13,7 @@ const PostList = () => {
       {
         postItems && (
           postItems.map(el => (
-            <PostItem/>
+            <PostItem key={el.id} dataPost={el}/>
           ))
         )
 
@@ -22,5 +22,6 @@ const PostList = () => {
     </div>
   );
 };
+
 
 export default PostList;

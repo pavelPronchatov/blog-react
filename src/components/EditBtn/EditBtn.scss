@@ -1,6 +1,6 @@
 .edit-btn {
   width: 300px;
-  height: 30px;
+  height: 50px;
   border: 2px solid grey;
   font-size: 18px;
   display: flex;
@@ -11,4 +11,11 @@
   margin-bottom: 30px;
   cursor: pointer;
   outline: none;
+  transition: background-color .3s;
+  text-decoration: none;
+  color: #000;
+  background-color: rgb(239, 239, 239);
+  &:hover {
+    background-color: #ffffff;
+  }
 }
