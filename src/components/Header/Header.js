@@ -1,15 +1,15 @@
 import React from 'react';
 
-import "./Header.scss";
+import style from "./Header.module.scss";
 
 const Header = () => {
   return (
-    <header className="header">
-      <input type="text" className="header__search" placeholder="search"/>
-      <div className="header__title">Blog</div>
-      <div className="header__calendar">
-        <div className="header__calendar--now">9/17/2020</div>
-        <button className="header__calendar--select">
+    <header className={style.header}>
+      <input type="text" className={style.headerSearch} placeholder="search"/>
+      <div className={style.headerTitle}>Blog</div>
+      <div className={style.headerCalendar}>
+        <div className={style.headerCalendarNow}>9/17/2020</div>
+        <button className={style.headerCalendarSelect}>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                x="0px" y="0px"
                width="36.447px" height="36.447px" viewBox="0 0 36.447 36.447">

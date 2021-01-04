@@ -1,14 +1,40 @@
 import React from 'react';
 
-const ModalExit = () => {
+
+import style from "./ModalExit.module.scss";
+import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {exitEditMode} from "../../redux/actions/actions";
+
+const ModalExit = ({isOpenModal, setIsOpenModal}) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="modal-exit">
-      <h4 className="modal-exit__title">Вы уверены что хотите выйти?</h4>
-      <div className="modal-exit__btns">
-        <div className="modal-exit__btn">Закрыть</div>
-        <div className="modal-exit__btn">Уйти</div>
+    <>
+      <div
+        className={`${style.overlay} ${isOpenModal ? style.active : ''}`}
+        onClick={() => setIsOpenModal(false)}
+      />
+
+      <div className={`${style.modal} ${isOpenModal ? style.active : ''}`}>
+        <h4 className={style.title}>Вы уверены что хотите выйти?</h4>
+        <div className={style.btns}>
+          <div
+            className={style.btn}
+            onClick={() => setIsOpenModal(false)}
+          >Закрыть
+          </div>
+          <Link
+            to="/"
+            className={style.btn}
+            onClick={() => {
+              setIsOpenModal(false);
+              dispatch(exitEditMode());
+            }}
+          >Уйти</Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

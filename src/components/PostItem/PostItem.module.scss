@@ -1,23 +1,23 @@
-.post-item {
+.postItem {
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
   &:last-child {
     margin-bottom: 0;
   }
-  &__header {
+  &Header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   }
-  &__title {
+  &Title {
     font-size: 30px;
     font-weight: 700;
   }
-  &__content {
+  &Content {
     display: flex;
   }
-  &__img {
+  &Img {
     width: 200px;
     height: 200px;
     margin-right: 20px;
@@ -25,17 +25,17 @@
     overflow: hidden;
     object-fit: cover;
   }
-  &__text {
+  &Text {
     color: grey;
     font-size: 16px;
     max-width: 100%;
     width: 500px;
   }
-  &__btns {
+  &Btns {
     display: flex;
   }
-  &__delete,
-  &__pencil{
+  &Delete,
+  &Pencil{
     width: 40px;
     height: 40px;
     cursor: pointer;

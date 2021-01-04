@@ -1,15 +1,15 @@
 import React from 'react';
 
-import "./Pagination.scss"
+import style from "./Pagination.module.scss"
 
 const Pagination = () => {
   return (
-    <div  className="pagination">
-      <button className="pagination__btn pagination__btn--prev">prev</button>
-      <button className="pagination__btn">1</button>
-      <button className="pagination__btn">2</button>
-      <button className="pagination__btn">3</button>
-      <button className="pagination__btn pagination__btn--next">next</button>
+    <div  className={style.pagination}>
+      <button className={style.paginationBtn}>prev</button>
+      <button className={style.paginationBtn}>1</button>
+      <button className={style.paginationBtn}>2</button>
+      <button className={style.paginationBtn}>3</button>
+      <button className={style.paginationBtn}>next</button>
     </div>
   );
 };

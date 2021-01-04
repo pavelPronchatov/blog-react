@@ -1,4 +1,4 @@
-import {IS_EDIT, SET_POST} from "../actions/types";
+import {DELETE_ITEM, EXIT_EDIT, IS_EDIT, SET_POST} from "../actions/types";
 
 
 const initialState = {
@@ -20,6 +20,18 @@ export const editReducer = (state = initialState, action) => {
       return {
         ...state,
         editMode: true,
+      }
+
+    case EXIT_EDIT:
+      return {
+        ...state,
+        editMode: false,
+      }
+
+    case DELETE_ITEM:
+      return {
+        ...state,
+        posts: state.posts.filter(item => item.id !== action.postId),
       }
 
     default:

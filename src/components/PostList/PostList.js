@@ -1,7 +1,7 @@
 import React from 'react';
 import PostItem from "../PostItem/PostItem";
 
-import "./PostList.scss";
+import style from "./PostList.module.scss";
 import {useSelector} from "react-redux";
 
 const PostList = () => {
@@ -9,7 +9,7 @@ const PostList = () => {
 
   console.log('post', postItems);
   return (
-    <div className="posts">
+    <div className={style.posts}>
       {
         postItems && (
           postItems.map(el => (
