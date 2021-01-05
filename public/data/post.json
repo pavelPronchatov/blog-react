@@ -1,24 +1,27 @@
 {
   "posts": [
     {
-      "id": 0,
+      "id": 11,
+      "readable": false,
       "title": "post 1",
       "date": "12.09.2020",
-      "image": "https://www.w3schools.com/w3css/img_snowtops.jpg",
+      "imgLink": "https://www.w3schools.com/w3css/img_snowtops.jpg",
       "text": "Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed,"
     },
     {
-      "id": 1,
+      "id": 12,
+      "readable": false,
       "title": "post 2",
       "date": "12.09.2020",
-      "image": "https://www.w3schools.com/w3css/img_snowtops.jpg",
+      "imgLink": "https://www.w3schools.com/w3css/img_snowtops.jpg",
       "text": "Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed,"
     },
     {
-      "id": 2,
+      "id": 23,
+      "readable": false,
       "title": "post 3",
       "date": "12.09.2020",
-      "image": "https://www.w3schools.com/w3css/img_snowtops.jpg",
+      "imgLink": "https://www.w3schools.com/w3css/img_snowtops.jpg",
       "text": "Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed,"
     }
   ]

@@ -1,0 +1,99 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 50px;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+  z-index: 3;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  border: 2px solid grey;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.btn {
+  width: 200px;
+  height: 40px;
+  border: 2px solid grey;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color .3s;
+  text-decoration: none;
+  color: #000;
+  background-color: #efefef;
+  &:hover {
+    background-color: #fff;
+  }
+}
+.btnBack {
+  width: 40px;
+  height: 40px;
+  margin-right: 30px;
+  &:after {
+    content: "<";
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.btns {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  margin-left: auto;
+  width: max-content;
+}
+.input {
+  &Title {
+    width: 100%;
+    height: 35px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 2px solid grey;
+    margin-bottom: 20px;
+    outline: none;
+    color: #000000;
+    &.error {
+      border-color: red;
+    }
+  }
+  &Text {
+    resize: none;
+    border: 2px solid grey;
+    width: 100%;
+    height: 300px;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+    &.error {
+      border-color: red;
+    }
+  }
+}
+

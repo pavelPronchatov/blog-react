@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import style from "./PostItem.module.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {deletePost} from "../../redux/actions/actions";
+import {deletePost, editPost} from "../../redux/actions/actions";
 
 const PostItem = ({dataPost}) => {
   const isEdit = useSelector(state => state.editReducer.editMode);
@@ -23,7 +23,10 @@ const PostItem = ({dataPost}) => {
               >
                 <img src={require('../../assets/trash-can.svg').default} alt=""/>
               </button>
-              <button className={style.postItemPencil}>
+              <button
+                className={style.postItemPencil}
+                onClick={() => dispatch(editPost(dataPost.id))}
+              >
                 <img src={require('../../assets/pencil.svg').default} alt=""/>
               </button>
             </div>
@@ -34,7 +37,7 @@ const PostItem = ({dataPost}) => {
         <div className={style.postItemTitle}>{dataPost.date}</div>
       </div>
       <div className={style.postItemContent}>
-        <img src={dataPost.image} alt={dataPost.title} className={style.postItemImg}/>
+        <img src={dataPost.imgLink} alt={dataPost.title} className={style.postItemImg}/>
         <div className={style.postItemText}>{dataPost.text}</div>
       </div>
     </div>
