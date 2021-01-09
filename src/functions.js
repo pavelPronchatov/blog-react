@@ -7,3 +7,7 @@ export  const formatedDate = date => {
 
   return `${d}.${m}.${date.getFullYear()}`
 }
+
+export const replaceEmptyImg = (node) => {
+  node.setAttribute('src', require('./assets/empty-img.png').default);
+}

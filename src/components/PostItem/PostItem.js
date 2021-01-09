@@ -1,17 +1,21 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 
 import style from "./PostItem.module.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {deletePost, editPost} from "../../redux/actions/actions";
+import {deletePost, selectEditPost, setIsEditPost, setModalPostAdd} from "../../redux/actions/actions";
+import {replaceEmptyImg} from "../../functions";
+import {Link} from "react-router-dom";
 
 const PostItem = ({dataPost}) => {
   const isEdit = useSelector(state => state.editReducer.editMode);
 
   const dispatch = useDispatch();
 
+  const imgRef = useRef(null);
+
   return (
-    <div className={style.postItem}>
+    <Link to={`/post-item/${dataPost.id}`} className={style.postItem}>
       <div className={style.postItemHeader}>
         {
           isEdit ? (
@@ -25,7 +29,11 @@ const PostItem = ({dataPost}) => {
               </button>
               <button
                 className={style.postItemPencil}
-                onClick={() => dispatch(editPost(dataPost.id))}
+                onClick={() => {
+                  dispatch(selectEditPost(dataPost.id));
+                  dispatch(setModalPostAdd(true));
+                  dispatch(setIsEditPost(true));
+                }}
               >
                 <img src={require('../../assets/pencil.svg').default} alt=""/>
               </button>
@@ -37,10 +45,15 @@ const PostItem = ({dataPost}) => {
         <div className={style.postItemTitle}>{dataPost.date}</div>
       </div>
       <div className={style.postItemContent}>
-        <img src={dataPost.imgLink} alt={dataPost.title} className={style.postItemImg}/>
+        <img
+          ref={imgRef}
+          src={dataPost.imgLink}
+          alt={dataPost.title}
+          className={style.postItemImg}
+          onError={() => replaceEmptyImg(imgRef.current)}/>
         <div className={style.postItemText}>{dataPost.text}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 

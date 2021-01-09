@@ -3,7 +3,7 @@ import PostList from "../components/PostList/PostList";
 import Pagination from "../components/Pagination/Pagination";
 
 import styles from "../components/EditPage/EditPage.module.scss";
-import {setEditMode} from "../redux/actions/actions";
+import {setEditMode, setModalPostAdd} from "../redux/actions/actions";
 import {useDispatch} from "react-redux";
 import ModalExit from "../components/ModalExit/ModalExit";
 import ModalAddPost from "../components/ModalAddPost/ModalAddPost";
@@ -13,7 +13,7 @@ console.log(styles);
 const EditPage = ({match}) => {
   //state
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [isOpenModalAddPost, setIsOpenModalAddPost] = useState(false);
+
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const EditPage = ({match}) => {
       <div className={styles.btnWrapper}>
         <button
           className="add-post edit-btn"
-          onClick={() => setIsOpenModalAddPost(true)}
+          onClick={() => dispatch(setModalPostAdd(true))}
         >
           Добавить статью
         </button>
@@ -46,7 +46,7 @@ const EditPage = ({match}) => {
       <Pagination/>
 
       <ModalExit isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
-      <ModalAddPost isOpenModal={isOpenModalAddPost} setIsOpenModal={setIsOpenModalAddPost}/>
+      <ModalAddPost/>
 
     </>
   );

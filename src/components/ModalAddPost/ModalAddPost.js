@@ -4,22 +4,17 @@ import React, {useEffect} from 'react';
 import style from "./ModalAddPost.module.scss";
 import {Link} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
-import {addPost} from "../../redux/actions/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {addPost, editPost, setIsEditPost, setModalPostAdd} from "../../redux/actions/actions";
 
-const ModalAddPost = ({isOpenModal, setIsOpenModal}) => {
+const ModalAddPost = () => {
+  //redux
   const dispatch = useDispatch();
+  const isOpenModal = useSelector(state => state.editReducer.isModalAddPost);
+  const isEditPost = useSelector(state => state.editReducer.isEditPost);
+  const editPostItem = useSelector(state => state.editReducer.editPost);
 
-
-  useEffect(() => {
-    if (isOpenModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isOpenModal])
-
-  const {register, handleSubmit, reset, errors} = useForm({
+  const {register, handleSubmit, reset, errors, setValue} = useForm({
     defaultValues: {
       title: '',
       imgLink: '',
@@ -27,8 +22,35 @@ const ModalAddPost = ({isOpenModal, setIsOpenModal}) => {
     }
   });
 
+  useEffect(() => {
+    if (isOpenModal) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpenModal]);
+
+  useEffect(() => {
+    if (isEditPost) {
+      console.log(editPostItem.id);
+      setValue('title', editPostItem.title);
+      setValue('imgLink', editPostItem.imgLink);
+      setValue('text', editPostItem.text);
+    } else reset();
+  }, [editPostItem, isEditPost]);
+
+
   const onSubmit = data => {
-    dispatch(addPost(data));
+    if (isEditPost) {
+      dispatch(editPost(editPostItem.id, data));
+      dispatch(setIsEditPost(false));
+    } else {
+      dispatch(addPost(data));
+    }
     console.log(data);
     reset();
   }
@@ -44,14 +66,30 @@ const ModalAddPost = ({isOpenModal, setIsOpenModal}) => {
           <button
             type="button"
             className={`${style.btn} ${style.btnBack}`}
-            onClick={() => setIsOpenModal(false)}
+            onClick={() => {
+              dispatch(setModalPostAdd(false));
+              dispatch(setIsEditPost(false));
+
+            }}
           />
-          <button
-            type="submit"
-            className={style.btn}
-            onClick={() => setIsOpenModal(false)}
-          >Опубликовать
-          </button>
+          {
+            isEditPost ? (
+              <button
+                type="submit"
+                className={style.btn}
+                onClick={() => dispatch(setModalPostAdd(false))}
+              >Изменить
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className={style.btn}
+                onClick={() => dispatch(setModalPostAdd(false))}
+              >Опубликовать
+              </button>
+            )
+          }
+
         </div>
 
         <input

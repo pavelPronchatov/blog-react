@@ -6,6 +6,7 @@ import {setPosts} from "./redux/actions/actions";
 import {Route} from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import EditPage from "./pages/EditPage";
+import PostDetail from "./pages/PostDetail/PostDetail";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Header/>
         <Route exact path={'/'} component={MainPage}/>
         <Route exact path={'/edit-page'} component={EditPage}/>
+        <Route exact path={'/post-item/:postId'} component={PostDetail}/>
       </div>
     </div>
   );
