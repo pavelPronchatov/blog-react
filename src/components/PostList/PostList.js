@@ -5,8 +5,7 @@ import style from "./PostList.module.scss";
 import {useSelector} from "react-redux";
 
 const PostList = () => {
-  const postItems = useSelector(state => state.editReducer.posts);
-
+  const postItems = useSelector(state => state.editReducer.postsPerPage);
   console.log('post', postItems);
   return (
     <div className={style.posts}>

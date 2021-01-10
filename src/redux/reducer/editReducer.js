@@ -1,5 +1,5 @@
 import {
-  ADD_POST,
+  ADD_POST, CHANGE_CURRENT_PAGE,
   DELETE_ITEM,
   DETAIL_POST,
   EDIT_POST,
@@ -8,7 +8,7 @@ import {
   IS_EDIT_POST,
   IS_MODAL_POST_ADD,
   SELECT_EDIT_POST,
-  SET_POST
+  SET_POST, SET_POSTS_PER_PAGE
 } from "../actions/types";
 import {formatedDate} from "../../functions";
 
@@ -21,6 +21,8 @@ const initialState = {
   isModalAddPost: false,
   isEditPost: false,
   postDetailItem: {},
+  currentPage: 1,
+  postsPerPage: [],
 }
 
 
@@ -110,6 +112,18 @@ export const editReducer = (state = initialState, action) => {
             return el;
           }
         })[0]
+      }
+
+    case CHANGE_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.page,
+      }
+
+    case SET_POSTS_PER_PAGE:
+      return {
+        ...state,
+        postsPerPage: [...state.posts.slice(((state.currentPage * 5) - 5), state.currentPage * 5)]
       }
 
     default:

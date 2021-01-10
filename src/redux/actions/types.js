@@ -8,3 +8,5 @@ export const IS_MODAL_POST_ADD = "IS_MODAL_POST_ADD";
 export const IS_EDIT_POST = "IS_EDIT_POST";
 export const EDIT_POST = "EDIT_POST";
 export const DETAIL_POST = "DETAIL_POST";
+export const SET_POSTS_PER_PAGE = "SET_POSTS_PER_PAGE";
+export const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";

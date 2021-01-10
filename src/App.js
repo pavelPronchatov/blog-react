@@ -16,6 +16,7 @@ function App() {
     dispatch(setPosts());
   }, []);
 
+
   return (
     <div className="App">
       <div className="container">
