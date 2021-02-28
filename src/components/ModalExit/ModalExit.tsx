@@ -5,9 +5,14 @@ import style from "./ModalExit.module.scss";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {exitEditMode} from "../../redux/actions/actions";
-import PropTypes from "prop-types";
 
-const ModalExit = ({isOpenModal, setIsOpenModal}) => {
+
+type PropsType = {
+    isOpenModal: boolean
+    setIsOpenModal: (isOpen: boolean) => void
+}
+
+const ModalExit: React.FC<PropsType> = ({isOpenModal, setIsOpenModal}) => {
   const dispatch = useDispatch();
 
   return (
@@ -38,10 +43,5 @@ const ModalExit = ({isOpenModal, setIsOpenModal}) => {
     </>
   );
 };
-
-ModalExit.propTypes = {
-  isOpenModal: PropTypes.bool.isRequired,
-  setIsOpenModal: PropTypes.func.isRequired,
-}
 
 export default ModalExit;

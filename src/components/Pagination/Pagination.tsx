@@ -3,12 +3,14 @@ import React, {useEffect} from 'react';
 import style from "./Pagination.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {changeCurrentPage, changePostsPerPage} from "../../redux/actions/actions";
+import {AppStateType} from "../../redux/store";
+
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const posts = useSelector(state => state.editReducer.posts);
-  const currentPage = useSelector(state => state.editReducer.currentPage);
-  const pages = [];
+  const posts = useSelector((state: AppStateType) => state.editReducer.posts);
+  const currentPage = useSelector((state: AppStateType) => state.editReducer.currentPage);
+  const pages: Array<number> = [];
 
   useEffect(() => {
     if (posts.length > 0) {

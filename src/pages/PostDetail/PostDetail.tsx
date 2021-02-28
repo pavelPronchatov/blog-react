@@ -4,11 +4,17 @@ import {setDetailPost} from "../../redux/actions/actions";
 import style from "./PostDetail.module.scss";
 import {Link} from "react-router-dom";
 import {replaceEmptyImg} from "../../functions";
+import {AppStateType} from "../../redux/store";
 
-const PostDetail = ({match}) => {
+
+type PropsType = {
+    match: any
+}
+
+const PostDetail: React.FC<PropsType> = ({match}) => {
   const dispatch = useDispatch();
-  const dataPostItem = useSelector(state => state.editReducer.postDetailItem);
-  const posts = useSelector(state => state.editReducer.posts);
+  const dataPostItem = useSelector((state: AppStateType) => state.editReducer.postDetailItem);
+  const posts = useSelector((state: AppStateType) => state.editReducer.posts);
   const imgRef = useRef(null);
 
   useEffect(() => {

@@ -1,21 +1,27 @@
 import React, {useRef} from 'react';
-import PropTypes from 'prop-types';
-
 import style from "./PostItem.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {deletePost, selectEditPost, setIsEditPost, setModalPostAdd} from "../../redux/actions/actions";
 import {replaceEmptyImg} from "../../functions";
 import {Link} from "react-router-dom";
+import {PostType} from "../../types/types";
+import {AppStateType} from "../../redux/store";
 
-const PostItem = ({dataPost}) => {
-  const isEdit = useSelector(state => state.editReducer.editMode);
+
+type PropsType = {
+    dataPost: PostType
+}
+
+
+const PostItem: React.FC<PropsType> = ({dataPost}) => {
+  const isEdit = useSelector((state: AppStateType) => state.editReducer.editMode);
 
   const dispatch = useDispatch();
 
   const imgRef = useRef(null);
 
   return (
-    <Link to={`/post-item/${dataPost.id}`} className={style.postItem}>
+    <div className={style.postItem}>
       <div className={style.postItemHeader}>
         {
           isEdit ? (
@@ -45,20 +51,19 @@ const PostItem = ({dataPost}) => {
         <div className={style.postItemTitle}>{dataPost.date}</div>
       </div>
       <div className={style.postItemContent}>
-        <img
-          ref={imgRef}
-          src={dataPost.imgLink}
-          alt={dataPost.title}
-          className={style.postItemImg}
-          onError={() => replaceEmptyImg(imgRef.current)}/>
+          <Link to={`/post-item/${dataPost.id}`}>
+          <img
+              ref={imgRef}
+              src={dataPost.imgLink}
+              alt={dataPost.title}
+              className={style.postItemImg}
+              onError={() => replaceEmptyImg(imgRef.current)}/>
+          </Link>
+
         <div className={style.postItemText}>{dataPost.text}</div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-PostItem.propTypes = {
-  dataPost: PropTypes.object.isRequired,
-}
-
-export default PostItem;
+export default PostItem

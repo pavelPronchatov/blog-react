@@ -6,13 +6,15 @@ import {Link} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {addPost, editPost, setIsEditPost, setModalPostAdd} from "../../redux/actions/actions";
+import {AppStateType} from "../../redux/store";
+import {PostType} from "../../types/types";
 
 const ModalAddPost = () => {
   //redux
   const dispatch = useDispatch();
-  const isOpenModal = useSelector(state => state.editReducer.isModalAddPost);
-  const isEditPost = useSelector(state => state.editReducer.isEditPost);
-  const editPostItem = useSelector(state => state.editReducer.editPost);
+  const isOpenModal = useSelector((state: AppStateType) => state.editReducer.isModalAddPost);
+  const isEditPost = useSelector((state: AppStateType) => state.editReducer.isEditPost);
+  const editPostItem = useSelector((state: AppStateType) => state.editReducer.editPost);
 
   const {register, handleSubmit, reset, errors, setValue} = useForm({
     defaultValues: {
@@ -36,7 +38,6 @@ const ModalAddPost = () => {
 
   useEffect(() => {
     if (isEditPost) {
-      console.log(editPostItem.id);
       setValue('title', editPostItem.title);
       setValue('imgLink', editPostItem.imgLink);
       setValue('text', editPostItem.text);
@@ -44,7 +45,7 @@ const ModalAddPost = () => {
   }, [editPostItem, isEditPost]);
 
 
-  const onSubmit = data => {
+  const onSubmit = (data: PostType) => {
     if (isEditPost) {
       dispatch(editPost(editPostItem.id, data));
       dispatch(setIsEditPost(false));

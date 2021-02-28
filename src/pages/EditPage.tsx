@@ -8,9 +8,12 @@ import {useDispatch} from "react-redux";
 import ModalExit from "../components/ModalExit/ModalExit";
 import ModalAddPost from "../components/ModalAddPost/ModalAddPost";
 
-console.log(styles);
 
-const EditPage = ({match}) => {
+type PropsType = {
+    match: any
+}
+
+const EditPage: React.FC<PropsType> = ({match}) => {
   //state
   const [isOpenModal, setIsOpenModal] = useState(false);
 
