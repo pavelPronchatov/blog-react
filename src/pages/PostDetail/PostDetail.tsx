@@ -2,13 +2,17 @@ import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {setDetailPost} from "../../redux/actions/actions";
 import style from "./PostDetail.module.scss";
-import {Link} from "react-router-dom";
+import {Link, match} from "react-router-dom";
 import {replaceEmptyImg} from "../../functions";
 import {AppStateType} from "../../redux/store";
 
 
+interface matchParams {
+  postId: string
+}
+
 type PropsType = {
-    match: any
+  match: match<matchParams>
 }
 
 const PostDetail: React.FC<PropsType> = ({match}) => {

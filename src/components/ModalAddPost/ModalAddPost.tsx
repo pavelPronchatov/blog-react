@@ -9,6 +9,14 @@ import {addPost, editPost, setIsEditPost, setModalPostAdd} from "../../redux/act
 import {AppStateType} from "../../redux/store";
 import {PostType} from "../../types/types";
 
+
+type CreatePostType = {
+  title: string
+  imgLink: string
+  text: string
+
+}
+
 const ModalAddPost = () => {
   //redux
   const dispatch = useDispatch();
@@ -16,13 +24,7 @@ const ModalAddPost = () => {
   const isEditPost = useSelector((state: AppStateType) => state.editReducer.isEditPost);
   const editPostItem = useSelector((state: AppStateType) => state.editReducer.editPost);
 
-  const {register, handleSubmit, reset, errors, setValue} = useForm({
-    defaultValues: {
-      title: '',
-      imgLink: '',
-      text: '',
-    }
-  });
+  const {register, handleSubmit, reset, errors, setValue} = useForm<CreatePostType>();
 
   useEffect(() => {
     if (isOpenModal) {
